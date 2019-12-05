@@ -8,9 +8,16 @@ label_paths = [p.replace('leftImg8bit', 'gtFine').replace(
     '_image.jpg', '_label.png') for p in image_paths]
 
 # Assigning some RGB colors for the 7 + 1 (Misc) classes
-colors = np.array([[128, 64, 18], [244, 35, 232], [220, 20, 60], [0, 0, 230],
-                   [220, 190, 40], [70, 70, 70], [70, 130, 180], [0, 0, 0]
-                   ], dtype=np.int)
+colors = np.array([
+    [128, 64, 18],      # Drivable
+    [244, 35, 232],     # Non Drivable
+    [220, 20, 60],      # Living Things
+    [0, 0, 230],        # Vehicles
+    [220, 190, 40],     # Road Side Objects
+    [70, 70, 70],       # Far Objects
+    [70, 130, 180],     # Sky
+    [0, 0, 0]           # Misc
+], dtype=np.int)
 
 print(len(image_paths))
 

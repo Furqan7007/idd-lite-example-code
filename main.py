@@ -67,7 +67,7 @@ class Net(nn.Module):
     def forward(self, x):
         x = self.enc(x)
         # print(x.shape)
-        # x = F.relu(x)
+
         x = self.dec(x)
         # print(x.shape)
         output = x
@@ -145,6 +145,10 @@ def main():
 
     kwargs = {'num_workers': 1, 'pin_memory': True} if use_cuda else {}
     if args.inference:
+
+        # Code for generating predictions from the test dataset.
+        # Pretrained weights are take from the --pretrained command line parameter
+
         image_paths = glob('idd20k_lite/leftImg8bit/test/*/*_image.jpg')
         images = np.zeros((len(image_paths), 227, 320, 3), dtype=np.int)
         preds = np.zeros((len(image_paths), 227, 320), dtype=np.int)
@@ -172,6 +176,8 @@ def main():
             img.save(pred_path)
 
     else:
+
+        # Code for training on the train split of the dataset.
 
         image_paths = glob('idd20k_lite/leftImg8bit/train/*/*_image.jpg')
         label_paths = [p.replace('leftImg8bit', 'gtFine').replace(
