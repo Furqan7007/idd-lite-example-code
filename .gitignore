@@ -1,2 +1,5 @@
 idd20k_lite/*
-pred/*
+preds/*
+frames/*
+*.mp4
+.DS_Store
